@@ -13,8 +13,11 @@ import { ProductResolver } from './product-resolver.service';
     RouterModule.forChild([
       {
         path: 'products',
-        component: ProductListComponent,
         children: [
+          {
+            path: '',
+            component: ProductListComponent
+          },
           {
             path: ':id',
             component: ProductDetailComponent,
