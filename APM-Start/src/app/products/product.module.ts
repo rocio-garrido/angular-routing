@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProductEditGuard } from '../products/product-edit/product-edit.guard';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../user/auth.guard';
 import { ProductDetailComponent } from './product-detail.component';
@@ -28,6 +29,7 @@ import { ProductResolver } from './product-resolver.service';
           {
             path: ':id/edit',
             component: ProductEditComponent,
+            canDeactivate: [ProductEditGuard],
             resolve: { resolvedData: ProductResolver },
             children: [
               { path: '', redirectTo: 'info', pathMatch: 'full' },
